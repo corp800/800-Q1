@@ -1,16 +1,12 @@
 import ky from "ky";
-import type { ZodTypeAny, z } from "zod";
 
-let accessToken: string | null = null;
+import { createStorageUtil } from "./storage";
 
-export function setApiToken(token: string | null) {
-  accessToken = token;
-}
+// 인증 토큰만 저장하는 전용 스토리지
+const authStorage = createStorageUtil("local");
+const TOKEN_KEY = "auth-token";
 
-export function clearApiToken() {
-  accessToken = null;
-}
-
+// 공통 API 클라이언트
 export const apiClient = ky.create({
   prefix: "/api",
   headers: {
@@ -20,9 +16,12 @@ export const apiClient = ky.create({
   hooks: {
     beforeRequest: [
       ({ request }) => {
-        if (accessToken) {
-          request.headers.set("Authorization", `Bearer ${accessToken}`);
+        // 요청 전에 토큰을 헤더에 붙임
+        const token = authStorage.get<string>(TOKEN_KEY);
+        if (token) {
+          request.headers.set("Authorization", `Bearer ${token}`);
         } else {
+          // 토큰이 없으면 헤더를 지움
           request.headers.delete("Authorization");
         }
       },
@@ -30,32 +29,31 @@ export const apiClient = ky.create({
   },
 });
 
+// GET 요청
 export async function get<T>(url: string) {
   return apiClient.get(url).json<T>();
 }
 
-// 아래는 필요없어뵘
-export async function send<TResponse, TBody extends Record<string, unknown>>(
+// POST 요청
+export async function post<TResponse, TBody extends Record<string, unknown>>(
   url: string,
   body: TBody,
 ) {
   return apiClient.post(url, { json: body }).json<TResponse>();
 }
 
-export const post = send;
-
-export async function getWithSchema<TSchema extends ZodTypeAny>(
+// PUT 요청
+export async function put<TResponse, TBody extends Record<string, unknown>>(
   url: string,
-  schema: TSchema,
+  body: TBody,
 ) {
-  const data = await get<unknown>(url);
-  return schema.parse(data) as z.infer<TSchema>;
+  return apiClient.put(url, { json: body }).json<TResponse>();
 }
 
-export async function sendWithSchema<
-  TSchema extends ZodTypeAny,
-  TBody extends Record<string, unknown>,
->(url: string, body: TBody, schema: TSchema) {
-  const data = await send<unknown, TBody>(url, body);
-  return schema.parse(data) as z.infer<TSchema>;
+// DELETE 요청
+export async function del<TResponse, TBody extends Record<string, unknown>>(
+  url: string,
+  body: TBody,
+) {
+  return apiClient.delete(url, { json: body }).json<TResponse>();
 }

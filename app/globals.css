@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--theme-background);
+  --color-foreground: var(--theme-foreground);
+  --color-surface: var(--theme-surface);
+  --color-surface-foreground: var(--theme-surface-foreground);
+  --color-surface-muted: var(--theme-surface-muted);
+  --color-card: var(--theme-card);
+  --color-card-foreground: var(--theme-card-foreground);
+  --color-popover: var(--theme-popover);
+  --color-popover-foreground: var(--theme-popover-foreground);
+  --color-primary: var(--theme-primary);
+  --color-primary-foreground: var(--theme-primary-foreground);
+  --color-primary-hover: var(--theme-primary-hover);
+  --color-secondary: var(--theme-secondary);
+  --color-secondary-foreground: var(--theme-secondary-foreground);
+  --color-secondary-hover: var(--theme-secondary-hover);
+  --color-ghost: var(--theme-ghost);
+  --color-ghost-foreground: var(--theme-ghost-foreground);
+  --color-ghost-hover: var(--theme-ghost-hover);
+  --color-muted: var(--theme-muted);
+  --color-muted-foreground: var(--theme-muted-foreground);
+  --color-accent: var(--theme-accent);
+  --color-accent-foreground: var(--theme-accent-foreground);
+  --color-destructive: var(--theme-destructive);
+  --color-destructive-foreground: var(--theme-destructive-foreground);
+  --color-success: var(--theme-success);
+  --color-success-foreground: var(--theme-success-foreground);
+  --color-warning: var(--theme-warning);
+  --color-warning-foreground: var(--theme-warning-foreground);
+  --color-info: var(--theme-info);
+  --color-info-foreground: var(--theme-info-foreground);
+  --color-border: var(--theme-border);
+  --color-border-strong: var(--theme-border-strong);
+  --color-input: var(--theme-input);
+  --color-ring: var(--theme-ring);
+  --color-muted: var(--theme-muted);
+  --color-muted-foreground: var(--theme-muted-foreground);
+  --color-link: var(--theme-link);
+  --color-link-foreground: var(--theme-link-foreground);
+
+  --radius-lg: var(--theme-radius-lg);
+  --radius-md: var(--theme-radius-md);
+  --radius-sm: var(--theme-radius-sm);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
