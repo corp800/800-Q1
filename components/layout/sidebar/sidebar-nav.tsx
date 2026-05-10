@@ -78,7 +78,7 @@ export function SidebarNav({
                 aria-current={active ? "page" : undefined}
                 onClick={onNavigate}
                 className={cn(
-                  "group relative flex items-center gap-3 rounded-xl border outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
+                  "group relative flex items-center gap-3 overflow-hidden rounded-xl border outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
                   active
                     ? "border-primary/20 bg-primary/10 text-foreground"
                     : "border-transparent bg-muted/50 text-foreground hover:border-border hover:bg-muted",
@@ -99,7 +99,7 @@ export function SidebarNav({
                 <span
                   className={cn(
                     variant === "desktop"
-                      ? "text-sm font-medium md:max-xl:sr-only"
+                      ? "text-sm font-medium whitespace-nowrap md:max-xl:sr-only"
                       : "text-sm font-medium",
                   )}
                 >
