@@ -49,8 +49,10 @@ export function SidebarNav({
   return (
     <nav
       className={cn(
-        "flex-1 overflow-y-auto",
-        variant === "desktop" ? "p-3 md:max-xl:p-2 xl:p-4" : "p-6",
+        "flex-1 overflow-y-auto overflow-x-hidden",
+        variant === "desktop"
+          ? "p-3 md:max-xl:flex-none md:max-xl:px-2 md:max-xl:py-3 xl:p-4"
+          : "p-6",
       )}
       aria-label="주요 탐색"
     >
@@ -58,7 +60,7 @@ export function SidebarNav({
         className={cn(
           "space-y-3",
           variant === "desktop"
-            ? "space-y-2 md:max-xl:space-y-3 xl:space-y-2"
+            ? "md:max-xl:flex md:max-xl:flex-col md:max-xl:items-center md:max-xl:space-y-2 space-y-2 xl:space-y-2"
             : "",
         )}
       >
@@ -81,7 +83,7 @@ export function SidebarNav({
                     ? "border-primary/20 bg-primary/10 text-foreground"
                     : "border-transparent bg-muted/50 text-foreground hover:border-border hover:bg-muted",
                   variant === "desktop"
-                    ? "md:max-xl:justify-center md:max-xl:px-0 md:max-xl:py-3 xl:px-4 xl:py-3"
+                    ? "md:max-xl:h-12 md:max-xl:w-12 md:max-xl:justify-center md:max-xl:px-0 md:max-xl:py-0 md:max-xl:rounded-2xl md:max-xl:mx-auto xl:px-4 xl:py-3"
                     : "px-4 py-3",
                 )}
                 title={variant === "mobile" ? item.label : undefined}
