@@ -1,22 +1,37 @@
 "use client";
 
-import { type ThemeName, themes } from "@/theme";
-import { useTheme } from "../../theme/themeProvider";
+import { useTheme } from "next-themes";
+
+const themeOptions = [
+  { value: "system", label: "시스템" },
+  { value: "light", label: "라이트" },
+  { value: "dark", label: "다크" },
+  { value: "mumu", label: "무무" },
+] as const;
+
+const themeSelectorStyles = {
+  label:
+    "flex items-center gap-2 text-sm font-medium text-muted-foreground md:gap-3",
+  labelText: "hidden sm:inline",
+  select:
+    "h-9 w-28 rounded-md border border-border bg-surface px-3 text-sm text-foreground shadow-sm outline-none transition focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring sm:w-32",
+} as const;
 
 export function ThemeSelector() {
-  const { themeName, setThemeName } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const value = theme ?? "system";
 
   return (
-    <label className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
-      <span>테마</span>
+    <label className={themeSelectorStyles.label}>
+      <span className={themeSelectorStyles.labelText}>테마</span>
       <select
-        className="h-9 rounded-md border border-border bg-surface px-3 text-sm text-foreground shadow-sm outline-none transition focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring"
-        value={themeName}
-        onChange={(event) => setThemeName(event.target.value as ThemeName)}
+        className={themeSelectorStyles.select}
+        value={value}
+        onChange={(event) => setTheme(event.target.value)}
       >
-        {Object.values(themes).map((theme) => (
-          <option key={theme.name} value={theme.name}>
-            {theme.label}
+        {themeOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>

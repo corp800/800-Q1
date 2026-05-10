@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/site-header";
+import { DesktopSidebar } from "@/components/layout/sidebar/desktop-sidebar";
+import { MobileSidebar } from "@/components/layout/sidebar/mobile-sidebar";
+import { SidebarBreakpointSync } from "@/components/layout/sidebar/sidebar-breakpoint-sync";
+import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/theme/themeProvider";
 import "./globals.css";
 import Providers from "./providers";
@@ -14,11 +17,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className="min-h-screen bg-background text-foreground antialiased">
+    <html lang="ko" suppressHydrationWarning>
+      <body className="h-screen bg-background text-foreground antialiased overflow-hidden">
         <ThemeProvider>
-          <SiteHeader />
-          <Providers>{children}</Providers>
+          <Providers>
+            <div className="flex h-full w-full">
+              <SidebarBreakpointSync />
+              <MobileSidebar />
+              <DesktopSidebar />
+              <div className="flex flex-col flex-1 min-w-0 h-full min-h-0">
+                <SiteHeader />
+                <main className="flex-1 overflow-y-auto overflow-x-hidden min-h-0">
+                  {children}
+                </main>
+              </div>
+            </div>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

@@ -46,6 +46,129 @@
 }
 
 @layer base {
+  :root {
+    color-scheme: light;
+    --theme-background: #f8fafc;
+    --theme-foreground: #0f172a;
+    --theme-surface: #ffffff;
+    --theme-surface-foreground: #0f172a;
+    --theme-surface-muted: #f1f5f9;
+    --theme-card: #ffffff;
+    --theme-card-foreground: #0f172a;
+    --theme-popover: #ffffff;
+    --theme-popover-foreground: #0f172a;
+    --theme-primary: #2563eb;
+    --theme-primary-foreground: #ffffff;
+    --theme-primary-hover: #1d4ed8;
+    --theme-secondary: #e2e8f0;
+    --theme-secondary-foreground: #0f172a;
+    --theme-secondary-hover: #cbd5e1;
+    --theme-ghost: transparent;
+    --theme-ghost-foreground: #0f172a;
+    --theme-ghost-hover: #e2e8f0;
+    --theme-muted: #f1f5f9;
+    --theme-muted-foreground: #64748b;
+    --theme-accent: #14b8a6;
+    --theme-accent-foreground: #0f172a;
+    --theme-destructive: #ef4444;
+    --theme-destructive-foreground: #ffffff;
+    --theme-success: #22c55e;
+    --theme-success-foreground: #ffffff;
+    --theme-warning: #f59e0b;
+    --theme-warning-foreground: #111827;
+    --theme-info: #0ea5e9;
+    --theme-info-foreground: #ffffff;
+    --theme-border: #e2e8f0;
+    --theme-border-strong: #cbd5e1;
+    --theme-input: #cbd5e1;
+    --theme-ring: #2563eb;
+    --theme-link: #2563eb;
+    --theme-link-foreground: #1d4ed8;
+    --theme-radius-lg: 1rem;
+    --theme-radius-md: calc(1rem - 2px);
+    --theme-radius-sm: calc(1rem - 4px);
+  }
+
+  .dark {
+    color-scheme: dark;
+    --theme-background: #020617;
+    --theme-foreground: #e2e8f0;
+    --theme-surface: #0f172a;
+    --theme-surface-foreground: #e2e8f0;
+    --theme-surface-muted: #111827;
+    --theme-card: #0f172a;
+    --theme-card-foreground: #e2e8f0;
+    --theme-popover: #0f172a;
+    --theme-popover-foreground: #e2e8f0;
+    --theme-primary: #38bdf8;
+    --theme-primary-foreground: #020617;
+    --theme-primary-hover: #0ea5e9;
+    --theme-secondary: #1e293b;
+    --theme-secondary-foreground: #e2e8f0;
+    --theme-secondary-hover: #334155;
+    --theme-ghost: transparent;
+    --theme-ghost-foreground: #e2e8f0;
+    --theme-ghost-hover: #1e293b;
+    --theme-muted: #111827;
+    --theme-muted-foreground: #94a3b8;
+    --theme-accent: #22d3ee;
+    --theme-accent-foreground: #020617;
+    --theme-destructive: #f87171;
+    --theme-destructive-foreground: #020617;
+    --theme-success: #4ade80;
+    --theme-success-foreground: #020617;
+    --theme-warning: #fbbf24;
+    --theme-warning-foreground: #020617;
+    --theme-info: #38bdf8;
+    --theme-info-foreground: #020617;
+    --theme-border: #1e293b;
+    --theme-border-strong: #334155;
+    --theme-input: #334155;
+    --theme-ring: #38bdf8;
+    --theme-link: #38bdf8;
+    --theme-link-foreground: #7dd3fc;
+  }
+
+  .mumu {
+    color-scheme: dark;
+    --theme-background: #0f1021;
+    --theme-foreground: #f4f1ff;
+    --theme-surface: #171935;
+    --theme-surface-foreground: #f4f1ff;
+    --theme-surface-muted: #1f2244;
+    --theme-card: #171935;
+    --theme-card-foreground: #f4f1ff;
+    --theme-popover: #171935;
+    --theme-popover-foreground: #f4f1ff;
+    --theme-primary: #a78bfa;
+    --theme-primary-foreground: #0f1021;
+    --theme-primary-hover: #8b5cf6;
+    --theme-secondary: #2a2d55;
+    --theme-secondary-foreground: #f4f1ff;
+    --theme-secondary-hover: #343866;
+    --theme-ghost: transparent;
+    --theme-ghost-foreground: #f4f1ff;
+    --theme-ghost-hover: #2a2d55;
+    --theme-muted: #1f2244;
+    --theme-muted-foreground: #b8b3d9;
+    --theme-accent: #22d3ee;
+    --theme-accent-foreground: #0f1021;
+    --theme-destructive: #fb7185;
+    --theme-destructive-foreground: #0f1021;
+    --theme-success: #4ade80;
+    --theme-success-foreground: #0f1021;
+    --theme-warning: #fbbf24;
+    --theme-warning-foreground: #0f1021;
+    --theme-info: #38bdf8;
+    --theme-info-foreground: #0f1021;
+    --theme-border: #2a2d55;
+    --theme-border-strong: #43477a;
+    --theme-input: #43477a;
+    --theme-ring: #a78bfa;
+    --theme-link: #c4b5fd;
+    --theme-link-foreground: #ddd6fe;
+  }
+
   * {
     @apply border-border;
   }
@@ -55,5 +178,24 @@
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
+  }
+
+  /* 커스텀 스크롤바 디자인 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--theme-border-strong), transparent 20%);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-muted-foreground);
   }
 }
