@@ -1,8 +1,8 @@
 "use client";
 
 import { useAtom } from "jotai";
-import { SidebarNav } from "@/components/layout/sidebar/sidebar-nav";
-import { desktopSidebarOpenAtom } from "@/lib/layout-store";
+import { SidebarNav } from "@/components/layout/sidebar/sidebarNav";
+import { desktopSidebarOpenAtom } from "@/lib/layoutStore";
 import { cn } from "@/lib/utils";
 
 export function DesktopSidebar() {

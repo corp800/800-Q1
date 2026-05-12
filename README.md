@@ -9,7 +9,7 @@ Theme-driven design system and dashboard application built with Next.js.
 ### 1. 파일 및 디렉토리 (Files & Directories)
 *   **Kebab-case (소문자 및 하이픈)** 사용을 원칙으로 합니다.
 *   공통 컴포넌트, 유틸리티, 스타일 파일 등 모든 파일 이름에 적용됩니다.
-*   예: `site-header.tsx`, `app-sidebar.tsx`, `layout-store.ts`
+*   예: `siteHeader.tsx`, `appSidebar.tsx`, `layoutStore.ts`
 
 ### 2. 라우팅 (Routing)
 *   `app/` 디렉토리 내의 모든 라우팅 관련 폴더명은 **소문자 시작 및 Kebab-case**를 사용합니다.

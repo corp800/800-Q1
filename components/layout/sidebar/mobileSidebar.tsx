@@ -4,8 +4,8 @@ import { useAtom } from "jotai";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { IoClose } from "react-icons/io5";
-import { SidebarNav } from "@/components/layout/sidebar/sidebar-nav";
-import { mobileSidebarOpenAtom } from "@/lib/layout-store";
+import { SidebarNav } from "@/components/layout/sidebar/sidebarNav";
+import { mobileSidebarOpenAtom } from "@/lib/layoutStore";
 import { cn } from "@/lib/utils";
 
 export function MobileSidebar() {

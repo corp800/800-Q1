@@ -6,7 +6,7 @@ import { ThemeSelector } from "@/components/theme/themeSelector";
 import {
   desktopSidebarOpenAtom,
   mobileSidebarOpenAtom,
-} from "@/lib/layout-store";
+} from "@/lib/layoutStore";
 
 export function SiteHeader() {
   const isDesktopSidebarOpen = useAtomValue(desktopSidebarOpenAtom);

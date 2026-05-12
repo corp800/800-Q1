@@ -2,7 +2,7 @@
 
 import { useSetAtom } from "jotai";
 import { useEffect } from "react";
-import { mobileSidebarOpenAtom } from "@/lib/layout-store";
+import { mobileSidebarOpenAtom } from "@/lib/layoutStore";
 
 const DESKTOP_BREAKPOINT = "(min-width: 768px)";
 

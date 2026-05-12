@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { DesktopSidebar } from "@/components/layout/sidebar/desktop-sidebar";
-import { MobileSidebar } from "@/components/layout/sidebar/mobile-sidebar";
-import { SidebarBreakpointSync } from "@/components/layout/sidebar/sidebar-breakpoint-sync";
-import { SiteHeader } from "@/components/layout/site-header";
+import { DesktopSidebar } from "@/components/layout/sidebar/desktopSidebar";
+import { MobileSidebar } from "@/components/layout/sidebar/mobileSidebar";
+import { SidebarBreakpointSync } from "@/components/layout/sidebar/sidebarBreakpointSync";
+import { SiteHeader } from "@/components/layout/siteHeader";
 import { ThemeProvider } from "@/theme/themeProvider";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Providers from "./providers";
-
+import "react-day-picker/dist/style.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
