@@ -5,7 +5,11 @@ import { SidebarBreakpointSync } from "@/components/layout/sidebar/sidebar-break
 import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/theme/themeProvider";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
 import Providers from "./providers";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "800",
@@ -17,7 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html
+      lang="ko"
+      suppressHydrationWarning
+      className={cn("font-sans", geist.variable)}
+    >
       <body className="h-screen bg-background text-foreground antialiased overflow-hidden">
         <ThemeProvider>
           <Providers>
